@@ -96,21 +96,17 @@ Do **not** call it between steps, and do not call it to check something — `ren
 
 It names a chart three ways: `chartId` for a saved chart, `config` for one you have just built, or neither for the chart the person has open. Naming two at once is refused rather than guessed at.
 
-### What a successful `display_chart` reply carries, and what you MUST do with it
+### What a successful `display_chart` reply does, and what you MUST do with it
 
-The reply contains four content blocks: the rendered image, the PNG as a `file://` resource, the configuration as a second `file://` resource, and this instruction. `structuredContent` carries the filenames, byte lengths and SHA-256 hashes.
+The reply puts the chart on the person's screen by itself: ChatGPT draws it inline in the conversation, other clients show the image the reply carries. This works the same on web and mobile — there are no files to write.
 
-Before you answer:
+After a successful call:
 
-1. Find exactly one resource with MIME `image/png` **and** a `.png` URI. Base64-decode only its `blob` into the `pngFileName` given.
-2. Find exactly one **different** resource with MIME `application/json` **and** a `.json` URI. Write its `text` directly as UTF-8 into the `jsonFileName` given; it is not base64.
-3. Never select a resource by `type: "resource"` alone or by array position, and never reuse one resource for both files.
-4. Verify filenames, byte lengths, hashes, the PNG signature and dimensions, and that the JSON parses, against `structuredContent`.
-5. Embed the verified PNG visibly in your answer and link both verified files.
+1. Do **not** embed the chart again, write files for it, or replace it with a description. It is already showing.
+2. Below it, offer `imageUrl` and `jsonUrl` as two plain labelled links: "Download PNG" and "Download JSON". Both are lasting links that never expire — one to keep the picture, one to take away the configuration behind it.
+3. Add the short analytical message the chart supports, if the request called for one.
 
-Never claim an unverified path, and never finish with text alone.
-
-The reply also carries `imageUrl` and `jsonUrl` — lasting links that never expire. Offer both **below** the chart as plain labelled links ("Download PNG", "Download JSON"). They do not replace the files; they are what someone clicks to come back to this chart later.
+If the call is refused, fix what the diagnostics name and call it again. Never finish with text alone: a turn that should end with a chart ends with `display_chart`.
 
 ## Never redraw the chart yourself
 

@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "normchart",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Create, edit and render IBCS-compliant business charts with normchart.",
   "author": {
     "name": "normchart",
@@ -13,8 +13,8 @@
     "com.openai": {
       "interface": {
         "displayName": "normchart",
-        "shortDescription": "IBCS charts from your data",
-        "longDescription": "normchart builds business charts in IBCS notation (International Business Communication Standards) from your data: column, bar, line and waterfall charts with variance analysis for reporting and management presentations. Start from an IBCS template or the chart you have open, fill in your figures, and get the finished chart as an image together with the configuration behind it. Charts are saved to your normchart account and can be refined in the normchart editor. normchart only accesses the charts in the account you connect.",
+        "shortDescription": "Business charts for reports",
+        "longDescription": "Create business charts for financial reports and management presentations from your own figures. Paste a table or describe your data, and normchart builds a column, bar, line or waterfall chart in the IBCS reporting standard (International Business Communication Standards), with actual, plan and previous-year values and their variances. It saves the chart to your normchart account and shows it in the conversation, with download links for the image and the chart configuration. You can refine the chart afterwards in the normchart editor. normchart only reads and changes the charts in the normchart account you connect; it accesses no other data.",
         "developerName": "normchart",
         "category": "Productivity",
         "capabilities": ["Read", "Write"],
@@ -84,7 +84,7 @@
         "commerce_description": "normchart does not sell products or process payments."
       },
       "publication": {
-        "release_notes": "Renamed from UniformChart to normchart, with the new domain www.normchart.com. Updated to the v13 chart library and authoring documents. Adds a bundled skill that guides the assistant through building IBCS charts.",
+        "release_notes": "Charts now appear directly in the conversation on web and mobile, with download links for the PNG and the chart configuration, instead of as files the assistant has to write out. Responses no longer include internal fields (visibility, slug, timestamps, renderer details).",
         "translations": {
           "de-DE": {
             "subtitle": "IBCS-Charts aus deinen Daten",
