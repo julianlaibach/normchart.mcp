@@ -1,7 +1,7 @@
 {
   "name": "normchart",
   "displayName": "normchart",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Build, refine and render IBCS-compliant business charts from your data with normchart: start from an IBCS template or your open chart, fill in your figures, and get the finished chart with the configuration behind it.",
   "author": {
     "name": "normchart",

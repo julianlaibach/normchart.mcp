@@ -72,14 +72,14 @@ Two traps worth naming:
 - `get_authoring_guide` — the four authoring documents, an index with no arguments, then one section at a time. The startup gate above runs through it.
 - `get_template` — the IBCS template catalogue (no code), or one template's complete configuration (`C08B`, or a family like `C08`). The normal starting point for a new chart: take the closest template, replace its data, keep its structure.
 - `list_charts` — the person's saved charts. Deliberately omits configurations.
-- `get_chart` — one saved chart's complete configuration, by id.
+- `get_chart` — one saved chart's complete configuration, by id. Like `get_current_chart` and `get_template`, it ends its text with the configuration as JSON: that is the document to change.
 - `get_current_chart` — the chart open in the person's editor right now, including the last second or two of typing and charts never saved anywhere. Use this when they say "this chart" or "what I'm looking at".
 - `render_chart` — draw a configuration and return the library's diagnostics. Nothing is shown, but a draft that renders without errors is saved: the first one of a new chart creates it in the person's account. **Call this before every write**, and fix what it reports.
 
 **Writing — every one of these saves to the person's normchart account.**
 
 - `create_chart` — a new saved chart.
-- `update_chart` — a new version of a named chart. Both refuse a configuration with error diagnostics.
+- `update_chart` — a new version of a named chart, or just a new title: to rename, pass `chartId` and `title` only, with no configuration. Both refuse a configuration with error diagnostics.
 - `show_in_editor` — save a chart and put it on the screen of whoever has the editor open: a new version of the chart they have open, or a new chart when a template or nothing is open, which the editor then switches to.
 
 **Delivering the finished chart.**
